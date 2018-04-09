@@ -21,6 +21,10 @@ public class Pronostico {
 		}
 	}
 	
+	public Previsione get(int i) {
+		return this.colonna.get(i) ;
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder() ;
 		for(Previsione p: colonna) {
