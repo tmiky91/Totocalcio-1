@@ -13,6 +13,12 @@ public class Schedina {
 		this.N = N;
 		this.colonna = new ArrayList<Risultato>();
 	}
+	
+	// clone constructor
+	public Schedina(Schedina other) {
+		this.N = other.N ;
+		this.colonna = new ArrayList<>(other.colonna) ;
+	}
 
 	public void add(Risultato valore) {
 		if (colonna.size() < N) {

@@ -1,14 +1,28 @@
 package it.polito.tdp.toto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Expander {
+	
+	private List<Schedina> soluzione ;
 
 	public List<Schedina> expand(Pronostico p) {
-		return null;
+		
+		soluzione = new ArrayList<Schedina>() ;
+		
+		cerca(new Schedina(p.getN()), p, 0) ;
+		
+		return soluzione;
 	}
 
 	private void cerca(Schedina parziale, Pronostico p, int livello) {
+		
+		if(livello==p.getN()) {
+			// caso terminale => ho una soluzione completa
+			soluzione.add(new Schedina(parziale)) ;
+			return ;
+		}
 		
 		Previsione mosse = p.get(livello) ;
 		for( Risultato mossa : mosse.getValori() ) {
