@@ -1,11 +1,21 @@
 package it.polito.tdp.toto;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Espandi {
 	
-	public void espandiPronostico(Pronostico p) {
+	
+	private List<Schedina> soluzioni = new LinkedList<Schedina>();
+	
+	public List<Schedina> espandiPronostico(Pronostico p) {
 		Schedina parziale = new Schedina(p.getN());
 		espandi(p, parziale, 0);
+		
+		return soluzioni;
 	}
+	
+	
 	
 	//Livello della ricorsione = singola partita
 	//Livello =0 -> schedina con zero risultati
@@ -16,7 +26,8 @@ public class Espandi {
 		//io devo determinare parziale[livello] (cioè la livello+1 esima riga) sulla base della previsione in p[livello]
 		
 		if(livello==p.getN()) {
-			System.out.println(parziale);
+			//System.out.println(parziale);
+			this.soluzioni.add(new Schedina(parziale));
 			return;
 		}
 		
